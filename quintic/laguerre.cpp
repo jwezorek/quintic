@@ -5,7 +5,7 @@
 #include <algorithm>
 
 std::pair<std::vector<std::complex<double>>, std::complex<double>> horner(const std::vector<std::complex<double>>& a, std::complex<double> x0) {
-	int n = a.size();
+	int n = static_cast<int>(a.size());
 	auto b = std::vector<std::complex<double>>(std::max(1, n - 1));
 
 	for (int i = n - 1; i > 0; i--)
@@ -18,7 +18,7 @@ std::complex<double> eval(const std::vector<std::complex<double>>& p, std::compl
 }
 
 std::vector<std::complex<double>> derivative(const std::vector<std::complex<double>>& p) {
-	int n = p.size();
+	int n = static_cast<int>(p.size());
 	auto r = std::vector<std::complex<double>>(std::max(1, n - 1));
 	for (int i = 1; i < n; i++)
 		r[i - 1] = p[i] * std::complex<double>(i);
@@ -33,7 +33,7 @@ int cmp(std::complex<double> x, std::complex<double> y) {
 }
 
 std::complex<double> find_one_root(const std::vector<std::complex<double>>& p0, std::complex<double> x) {
-	int n = p0.size() - 1;
+	int n = static_cast<int>(p0.size()) - 1;
 	auto p1 = derivative(p0);
 	auto p2 = derivative(p1);
 	for (int step = 0; step < 10000; step++) {

@@ -34,10 +34,6 @@ namespace quin {
 	};
 
 	namespace details {
-
-		template<typename F>
-		const F EPS = 1e-7;
-
 		template<typename F>
 		const F nan = std::numeric_limits<F>::quiet_NaN();
 
@@ -419,11 +415,9 @@ namespace quin {
 
 		template<typename F>
 		std::tuple<Z<F>, Z<F>> refineRoots(const GeneralQuintic<F>& quintic, Z<F> root1, Z<F> root2, F thresh, int iter) {
-			if (std::abs(quintic.evaluate(root1)) > thresh)
-				root1 = refineRoot(quintic, root1, thresh, iter);
 
-			if (std::abs(quintic.evaluate(root2)) > thresh)
-				root2 = refineRoot(quintic, root2, thresh, iter);
+			root1 = refineRoot(quintic, root1, thresh, iter);
+			root2 = refineRoot(quintic, root2, thresh, iter);
 
 			auto error_root1 = std::abs(quintic.evaluate(root1));
 			auto error_root2 = std::abs(quintic.evaluate(root2));

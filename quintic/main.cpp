@@ -64,20 +64,13 @@ Results DoTest(int lower, int upper) {
 		old_error += std::abs(gp.evaluate(root));
 		old_fails += (err > 0.005) ? 1 : 0;
 	}
+
 	return { new_time < old_time, new_error < old_error, new_fails, old_fails, new_error, old_error, new_time, old_time };
 }
 
-/*
 int main()
 {
-	auto [root1, root2, root3, root4] = quin::solveQuartic<double>(1, 2, 3, 4, 5);
-
-}
-*/
-
-int main()
-{
-	int n = 50000;
+	int n = 10000;
 	int range = 100;
 
 	int new_is_faster = 0;
