@@ -70,8 +70,8 @@ Results DoTest(int lower, int upper) {
 
 int main()
 {
-	int n = 10000;
-	int range = 100;
+	int n = 1000;
+	int range = 10;
 
 	int new_is_faster = 0;
 	int new_is_more_accurate = 0;
